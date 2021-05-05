@@ -26,7 +26,7 @@ public class FindInRotatedArray {
 	private int searchBinary (int[] arr, int left, int right, int searchVal) {
 		
 		int mid = (left + right) / 2;
-		if (left == right || left < 0 || right >= arr.length) return -1;
+		if (left == right || left < 0 || right > arr.length) return -1;
 		if (arr[mid] == searchVal) return mid;
 		if (searchVal < arr[mid]) return searchBinary(arr, left, mid - 1, searchVal);
 		else return searchBinary(arr, mid + 1, right, searchVal);
@@ -36,7 +36,7 @@ public class FindInRotatedArray {
 		FindInRotatedArray array = new FindInRotatedArray();
 		int[] input = new int[] {5,6,7,8,9,10,1,2,3,4};
 		int smallIndex = array.smallest(input, 0, input.length);
-		int searchVal = 0;
+		int searchVal = 4;
 		if (searchVal > input[input.length -1 ])
 			System.out.println(array.searchBinary(input, 0, smallIndex - 1, searchVal));
 		else 
