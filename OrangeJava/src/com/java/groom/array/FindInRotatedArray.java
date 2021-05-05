@@ -11,8 +11,8 @@ public class FindInRotatedArray {
 
 	public  int smallest(int[]arr, int left, int right) {
 
-		if(left> right) return arr[0];
-		if(left== right) return arr[left];
+		if(left > right) return arr[0];
+		if(left == right) return arr[left];
 		
 		int mid=(left+right)/2;
 		
@@ -26,21 +26,24 @@ public class FindInRotatedArray {
 	private int searchBinary (int[] arr, int left, int right, int searchVal) {
 		
 		int mid = (left + right) / 2;
-		if (left == right || left < 0 || right > arr.length) return -1;
+		if (left > right || left < 0 || right > arr.length) return -1;
 		if (arr[mid] == searchVal) return mid;
 		if (searchVal < arr[mid]) return searchBinary(arr, left, mid - 1, searchVal);
 		else return searchBinary(arr, mid + 1, right, searchVal);
 	}
 	
-	public static void main(String[] args) {
-		FindInRotatedArray array = new FindInRotatedArray();
-		int[] input = new int[] {5,6,7,8,9,10,1,2,3,4};
-		int smallIndex = array.smallest(input, 0, input.length);
-		int searchVal = 4;
+	public int search (int[] input, int searchVal) {
+		int smallIndex = smallest(input, 0, input.length);
 		if (searchVal > input[input.length -1 ])
-			System.out.println(array.searchBinary(input, 0, smallIndex - 1, searchVal));
+			return(searchBinary(input, 0, smallIndex, searchVal));
 		else 
-			System.out.println(array.searchBinary(input, smallIndex, input.length, searchVal));
-		
+			return(searchBinary(input, smallIndex, input.length, searchVal));
 	}
+	
+	public static void main(String[] args) {
+		FindInRotatedArray array=new FindInRotatedArray();
+		int[] input = new int[] {5,6,7,8,9,10,1,2,3,4};
+		System.err.println(array.search(input, 5));
+	}
+	
 }
