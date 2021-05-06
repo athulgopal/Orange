@@ -10,19 +10,15 @@ write code to find an element in the array. The array was originally sorted in i
 public class FindInRotatedArray {
 
 	public int smallest(int[] arr, int left, int right) {
-
 		if (left > right)
 			return arr[0];
 		if (left == right)
 			return arr[left];
-
 		int mid = (left + right) / 2;
-
 		if (mid > left && arr[mid] < arr[mid - 1])
 			return mid;
 		if (mid < right && arr[mid] > arr[mid + 1])
 			return mid + 1;
-
 		if (arr[right] > arr[mid])
 			return smallest(arr, left, mid - 1);
 		else
@@ -30,7 +26,6 @@ public class FindInRotatedArray {
 	}
 
 	private int searchBinary(int[] arr, int left, int right, int searchVal) {
-
 		int mid = (left + right) / 2;
 		if (left > right || left < 0 || right > arr.length)
 			return -1;
